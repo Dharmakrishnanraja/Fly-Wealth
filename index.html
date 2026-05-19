@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta name="theme-color" content="#0891b2">
 <meta name="mobile-web-app-capable" content="yes">
@@ -289,7 +290,7 @@ const DEFAULT_STATE={pkgIndex:0,counts:[0,0,0,0,0],lPairs:[0,0,0,0,0],capOn:true
 // Pull-to-refresh prevention
 useEffect(()=>{let lY=0;const ts=e=>{lY=e.touches[0].clientY;};const tm=e=>{const y=e.touches[0].clientY;const atTop=window.scrollY===0||document.documentElement.scrollTop===0;if(atTop&&y>lY)e.preventDefault();lY=y;};document.addEventListener('touchstart',ts,{passive:true});document.addEventListener('touchmove',tm,{passive:false});return()=>{document.removeEventListener('touchstart',ts);document.removeEventListener('touchmove',tm);};},[]);// Warn before leaving
 useEffect(()=>{const h=e=>{e.preventDefault();e.returnValue='';return'';};window.addEventListener('beforeunload',h);return()=>window.removeEventListener('beforeunload',h);},[]);// Hide loading screen
-useEffect(()=>{setTimeout(()=>{const el=document.getElementById('loading');if(el){el.style.opacity='0';el.style.transition='opacity 0.5s';setTimeout(()=>el.remove(),500);}},800);},[]);const res=calcResult(cs.pkgIndex,cs.counts,cs.lPairs,cs.capOn,cs.boxes,cs.dlCount);const screens={0:/*#__PURE__*/React.createElement(CompanyTab,null),1:/*#__PURE__*/React.createElement(LevelDSIScreen,{state:cs,setState:setCS}),2:/*#__PURE__*/React.createElement(ChannelScreen,{state:cs,setState:setCS}),3:/*#__PURE__*/React.createElement(BonusesScreen,{state:cs,setState:setCS}),4:/*#__PURE__*/React.createElement(InfoTab,null),5:/*#__PURE__*/React.createElement(ProductsTab,null),6:/*#__PURE__*/React.createElement(WhyFlyTab,null),7:/*#__PURE__*/React.createElement(AboutTab,null)};return/*#__PURE__*/React.createElement("div",{style:{minHeight:'100vh',background:'#f8fafc'}},/*#__PURE__*/React.createElement(TopBar,{result:res}),/*#__PURE__*/React.createElement("div",{className:"px-3 pt-3 pb-24"},screens[tab]),/*#__PURE__*/React.createElement(BottomNav,{current:tab,onChange:setTab}));}const root=ReactDOM.createRoot(document.getElementById('root'));root.render(/*#__PURE__*/React.createElement(App,null));</script>
+useEffect(()=>{setTimeout(()=>{const el=document.getElementById('loading');if(el){el.style.opacity='0';el.style.transition='opacity 0.5s';setTimeout(()=>el.remove(),500);}},800);},[]);const res=calcResult(cs.pkgIndex,cs.counts,cs.lPairs,cs.capOn,cs.boxes,cs.dlCount);const screens={0:/*#__PURE__*/React.createElement(CompanyTab,null),1:/*#__PURE__*/React.createElement(LevelDSIScreen,{state:cs,setState:setCS}),2:/*#__PURE__*/React.createElement(ChannelScreen,{state:cs,setState:setCS}),3:/*#__PURE__*/React.createElement(BonusesScreen,{state:cs,setState:setCS}),4:/*#__PURE__*/React.createElement(InfoTab,null),5:/*#__PURE__*/React.createElement(ProductsTab,null),6:/*#__PURE__*/React.createElement(WhyFlyTab,null),7:/*#__PURE__*/React.createElement(AboutTab,null)};return/*#__PURE__*/React.createElement("div",{style:{minHeight:'100vh',background:'#f8fafc'}},/*#__PURE__*/React.createElement(TopBar,{result:res}),/*#__PURE__*/React.createElement("div",{className:"px-3 pt-3 pb-24"},screens[tab]),/*#__PURE__*/React.createElement(BottomNav,{current:tab,onChange:setTab}));}const root=ReactDOM.createRoot(document.getElementById('root'));root.render(/*#__PURE__*/React.createElement(App,null));setTimeout(function(){var l=document.getElementById('loading');if(l){l.style.display='none';}},1000);</script>
 
 <script>
 let deferredPrompt;
@@ -337,6 +338,16 @@ if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./service-worker.js');
     });
 }
+</script>
+
+
+<script>
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    var l=document.getElementById('loading');
+    if(l){l.style.display='none';}
+  },1500);
+});
 </script>
 
 </body>
