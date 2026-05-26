@@ -1,13 +1,15 @@
+const CACHE_NAME = 'flywealth-cache-v1';
+
 self.addEventListener('install', event => {
-self.skipWaiting();
+  self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
-event.waitUntil(clients.claim());
+  event.waitUntil(clients.claim());
 });
 
 self.addEventListener('fetch', event => {
-event.respondWith(
-fetch(event.request).catch(() => caches.match(event.request))
-);
+  event.respondWith(
+    fetch(event.request).catch(() => caches.match(event.request))
+  );
 });
